@@ -1,0 +1,17 @@
+{% extends "layout.html" %}
+{% import "bootstrap/wtf.html" as wtf %}
+
+{% block head %}
+    <title>Sign Up!</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='auth/auth.css') }}">
+{% endblock %}
+
+{% block body %}
+    <div class="page-header">
+        <h1>Register</h1>
+    </div>
+    <div class="col-md-4">
+        {{ wtf.quick_form(form) }}
+    </div>
+
+{% endblock %}
