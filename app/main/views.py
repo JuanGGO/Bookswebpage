@@ -1,7 +1,8 @@
-from flask import render_template
+from flask import render_template, request
 from . import main
 
 
-@main.route("/", methods=['GET', 'POST'])
+@main.route("/")
 def index():
-    return render_template("main/index.html")
+    return render_template("auth/login.html")
+
