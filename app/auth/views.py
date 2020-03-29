@@ -14,7 +14,7 @@ def login():
         return render_template("error.html", message="Username Non-existent. Please register!")
     if user.verify_password(request.form.get("password")):
         login_user(user, request.form.get("rememberme"))
-        return render_template("main/user.html", username=username)
+        return redirect(url_for('main.user', username=user.username))
     return render_template("auth/login.html")
 
 
@@ -32,4 +32,10 @@ def signup():
     return render_template('auth/signup.html', form=form)
 
 
+@auth.route("/logout")
+@login_required
+def logout():
+    logout_user()
+    flash("You've been successfully logged out")
+    return redirect(url_for("main.index"))
 
